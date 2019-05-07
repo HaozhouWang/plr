@@ -33,6 +33,11 @@ function pkg() {
     [ -f /opt/gcc_env.sh ] && source /opt/gcc_env.sh
     source /usr/local/greenplum-db-devel/greenplum_path.sh
 
+    ## Install R
+    tar zxf bin_r/bin_r_$OSVER.tar.gz -C /usr/lib64
+
+    export LD_LIBRARY_PATH=/usr/lib64/R/lib64/R/lib:/usr/lib64/R/lib64/R/extlib:$LD_LIBRARY_PATH
+    export R_HOME=/usr/lib64/R/lib64/R
     export USE_PGXS=1
     pushd plr_src/src
     make clean

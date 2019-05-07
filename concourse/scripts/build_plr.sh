@@ -12,7 +12,7 @@ source "${TOP_DIR}/gpdb_src/concourse/scripts/common.bash"
 function install_pkg() {
 case $OSVER in
 centos*)
-    yum install -y pkg-config
+    yum install -y pkgconfig
     ;;
 ubuntu*)
     apt update

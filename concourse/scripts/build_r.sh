@@ -14,6 +14,10 @@ if [ "$OSVER" == "suse11" ]; then
     zypper --no-gpg-checks -n install texlive-latex
     zypper --no-gpg-checks -n install libopenssl-devel openssl
     zypper --no-gpg-checks -n install wget
+else if ["$OSVER" == "ubuntu18"]; then
+    apt-get install -y texlive-full
+    apt-get install -y wget
+    apt-get install -y build-essential g77 gfortran
 else
     yum install -y subversion
     yum install -y gcc gcc-c++ gcc-gfortran

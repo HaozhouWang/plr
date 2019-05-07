@@ -226,6 +226,7 @@ jobs:
 - name: build_r_ubuntu18
   plan:
   - aggregate:
+    - get: ubuntu18-image
     - get: plr_src
       trigger: true
     - get: bin_gpdb_ubuntu18

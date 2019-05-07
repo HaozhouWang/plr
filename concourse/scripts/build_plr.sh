@@ -9,14 +9,14 @@ TOP_DIR=${CWDIR}/../../../
 
 source "${TOP_DIR}/gpdb_src/concourse/scripts/common.bash"
 
-function install_R() {
+function install_pkg() {
 case $OSVER in
 centos*)
-    yum install -y R pkg-config
+    yum install -y pkg-config
     ;;
 ubuntu*)
     apt update
-    apt install -y r-base pkg-config
+    apt install -y pkg-config
     ;;
 *)
     echo "unknown OSVER = $OSVER"
@@ -27,9 +27,8 @@ esac
 
 function pkg() {
     ## Install R before source greenplum_path
-    install_R
-    which R
-    
+    install_pkg
+
     [ -f /opt/gcc_env.sh ] && source /opt/gcc_env.sh
     source /usr/local/greenplum-db-devel/greenplum_path.sh
 

@@ -5,11 +5,6 @@ set -exo pipefail
 CWDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP_DIR=${CWDIR}/../../../
 
-
-if [ "$OSVER" == "centos5" ]; then
-    source /opt/gcc_env.sh
-fi
-
 if [ "$OSVER" == "suse11" ]; then
     zypper addrepo http://download.opensuse.org/distribution/11.4/repo/oss/ oss
     zypper --no-gpg-checks -n install -f binutils

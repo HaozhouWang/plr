@@ -5,6 +5,9 @@
 groups:
 - name: GPDB6
   jobs:
+    - build_r_centos7
+    - build_r_centos6
+    - build_r_ubuntu18
     - plr_centos7_build
     - plr_centos6_build
     - plr_ubuntu18_build

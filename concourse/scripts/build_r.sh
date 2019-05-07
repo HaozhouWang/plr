@@ -18,7 +18,7 @@ elif [ "$OSVER" == "ubuntu18" ]; then
     apt-get update
     apt-get install -y texlive
     apt-get install -y wget
-    apt-get install -y build-essential g77 gfortran
+    apt-get install -y build-essential gfortran
 else
     yum install -y subversion
     yum install -y gcc gcc-c++ gcc-gfortran

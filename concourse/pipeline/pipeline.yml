@@ -233,10 +233,11 @@ jobs:
     - get: xz
     - get: zlib
     - get: bzip2
-  - task: r_suse11_build
+  - task: r_ubuntu18_build
     file: plr_src/concourse/tasks/build_r.yml
+    image: ubuntu18-image
     output_mapping:
-      bin_r: bin_r_suse11
+      bin_r: bin_r_ubuntu18
     params:
       OSVER: ubuntu18
   - put: bin_r_ubuntu18

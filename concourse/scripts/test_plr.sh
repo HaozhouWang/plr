@@ -69,15 +69,15 @@ function setup_gpadmin_user() {
 	
 }
 
-function install_R()
+function install_pkg()
 {
 case $OSVER in
 centos*)
-    yum install -y R pkg-config
+    yum install -y pkgconfig
     ;;
 ubuntu*)
     apt update
-    apt install -y r-base pkg-config
+    apt install -y pkg-config
     ;;
 *)
     echo "unknown OSVER = $OSVER"
@@ -87,12 +87,12 @@ esac
 }
 
 function _main() {
-	time install_R
-	time install_gpdb
-	time setup_gpadmin_user
+    time install_pkg
+    time install_gpdb
+    time setup_gpadmin_user
 
-	time make_cluster
-	time prepare_test
+    time make_cluster
+    time prepare_test
     time test
 }
 

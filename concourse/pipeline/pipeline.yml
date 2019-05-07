@@ -262,6 +262,8 @@ jobs:
     - task: Build_PLR
       file: plr_src/concourse/tasks/build_plr.yml
       image: centos-gpdb-dev-7
+      input_mapping:
+        bin_r: bin_r_centos6
       output_mapping:
         bin_plr: plr_gpdb_centos7_build
       params:
@@ -289,6 +291,8 @@ jobs:
     - task: Build_PLR
       file: plr_src/concourse/tasks/build_plr.yml
       image: centos-gpdb-dev-6
+      input_mapping:
+        bin_r: bin_r_centos6
       output_mapping:
         bin_plr: plr_gpdb_centos6_build
       params:
@@ -316,6 +320,8 @@ jobs:
     - task: Build_PLR
       file: plr_src/concourse/tasks/build_plr.yml
       image: ubuntu18-image
+      input_mapping:
+        bin_r: bin_r_ubuntu18
       output_mapping:
         bin_plr: plr_gpdb_ubuntu18_build
       params:

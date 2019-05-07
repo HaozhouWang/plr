@@ -5,6 +5,7 @@ inputs:
   - name: bin_gpdb
   - name: plr_src
   - name: gpdb_src
+  - name: bin_r
 
 outputs:
   - name: bin_plr

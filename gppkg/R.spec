@@ -1,8 +1,7 @@
 Summary:        R statistics language 
 License:        GPLv2        
 Name:           R
-Version:        %{r_ver}
-Release:        %{r_rel} 
+Version:        %{r_ver} 
 Group:          Development/Tools
 Prefix:         /temp
 AutoReq:        no

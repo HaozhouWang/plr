@@ -113,10 +113,6 @@ if [ "$OSVER" == "suse11" ]; then
     export PATH=/usr/local/lib64/curl/bin/:$PATH
 fi
 
-
-if [ "$OSVER" == "centos5" ]; then
-fi
-
 export LIBRARY_PATH=$LD_LIBRARY_PATH
 
 wget --no-check-certificate https://cran.r-project.org/src/base/R-3/R-3.3.3.tar.gz

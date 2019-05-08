@@ -6,8 +6,8 @@ GP_VERSION_NUM := $(GP_MAJORVERSION)
 OS=$(word 1,$(subst _, ,$(BLDARCH)))
 ARCH=$(shell uname -p)
 
-R_RPM_FLAGS="--define 'r_dir $(R_HOME)' --define 'r_ver $(R_VER)'" 
-R_RPM=R-$(R_VER).$(ARCH).rpm
+R_RPM_FLAGS="--define 'r_dir $(R_HOME)' --define 'r_ver $(R_VER)' --define 'r_rel $(R_REL)'"" 
+R_RPM=R-$(R_VER)-$(R_REL).$(ARCH).rpm
 
 RPM_ARGS=$(subst -, ,$*)
 RPM_NAME=$(word 1,$(RPM_ARGS))

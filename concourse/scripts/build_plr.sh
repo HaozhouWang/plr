@@ -34,9 +34,14 @@ function pkg() {
 
     ## Install R
     tar zxf bin_r/bin_r_$OSVER.tar.gz -C /usr/lib64
+    if [ "$OSVER" == "ubuntu18" ]; then
+	export LD_LIBRARY_PATH=/usr/lib64/R/lib/R/lib:/usr/lib64/R/lib/R/extlib:$LD_LIBRARY_PATH
+        export R_HOME=/usr/lib64/R/lib/R
+    else
+        export LD_LIBRARY_PATH=/usr/lib64/R/lib64/R/lib:/usr/lib64/R/lib64/R/extlib:$LD_LIBRARY_PATH
+        export R_HOME=/usr/lib64/R/lib64/R
+    fi
 
-    export LD_LIBRARY_PATH=/usr/lib64/R/lib64/R/lib:/usr/lib64/R/lib64/R/extlib:$LD_LIBRARY_PATH
-    export R_HOME=/usr/lib64/R/lib64/R
     export USE_PGXS=1
     pushd plr_src/src
     make clean

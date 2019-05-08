@@ -115,17 +115,6 @@ fi
 
 
 if [ "$OSVER" == "centos5" ]; then
-
-    # Curl
-    wget --no-check-certificate http://curl.askapache.com/download/curl-7.54.1.tar.gz
-    tar zxf curl-7.54.1.tar.gz
-    pushd curl-7.54.1
-    ./configure --prefix=/usr/local/lib64/curl --disable-ldap --disable-ldaps
-    make -j
-    make install
-    popd
-    export LD_LIBRARY_PATH=/usr/local/lib64/curl/lib:$LD_LIBRARY_PATH
-    export PATH=/usr/local/lib64/curl/bin/:$PATH
 fi
 
 export LIBRARY_PATH=$LD_LIBRARY_PATH
@@ -149,8 +138,14 @@ popd
 
 # Magic to make it work from any directory it is installed into
 # given the fact R_HOME is set
-sed -i 's/\/usr\/lib64\/R\/lib64\/R/${R_HOME}/g' /usr/lib64/R/bin/R
-sed -i 's/\/usr\/lib64\/R\/lib64\/R/${R_HOME}/g' /usr/lib64/R/lib64/R/bin/R
+
+if [ "$OSVER" == "ubuntu18" ]; then
+    sed -i 's/\/usr\/lib64\/R\/lib\/R/${R_HOME}/g' /usr/lib64/R/bin/R
+    sed -i 's/\/usr\/lib64\/R\/lib\/R/${R_HOME}/g' /usr/lib64/R/lib/R/bin/R
+else
+    sed -i 's/\/usr\/lib64\/R\/lib64\/R/${R_HOME}/g' /usr/lib64/R/bin/R
+    sed -i 's/\/usr\/lib64\/R\/lib64\/R/${R_HOME}/g' /usr/lib64/R/lib64/R/bin/R
+fi
 
 mkdir /usr/lib64/R/lib64/R/extlib
 cp /usr/local/lib64/zlib/lib/libz.so.1      /usr/lib64/R/lib64/R/extlib

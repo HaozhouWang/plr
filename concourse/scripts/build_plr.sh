@@ -40,6 +40,7 @@ function pkg() {
     else
         export LD_LIBRARY_PATH=/usr/lib64/R/lib64/R/lib:/usr/lib64/R/lib64/R/extlib:$LD_LIBRARY_PATH
         export R_HOME=/usr/lib64/R/lib64/R
+	export PATH=/usr/lib64/R/bin/:$PATH
     fi
 
     export USE_PGXS=1

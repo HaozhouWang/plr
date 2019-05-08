@@ -18,10 +18,6 @@ EXTRA_CLEAN+=$(R_RPM) $(PLR_RPM) $(PLR_GPPKG)
 PWD=$(shell pwd)
 
 .PHONY: distro
-distro: $(TARGET_GPPKG)
-	$(MAKE) $(R_RPM) RPM_FLAGS=$(R_RPM_FLAGS)
-	PATH=$(INSTLOC)/bin:$(PATH) $(MAKE) $(PLR_RPM) RPM_FLAGS=$(PLR_RPM_FLAGS)
-	$(MAKE) $(PLR_GPPKG) MAIN_RPM=$(PLR_RPM) DEPENDENT_RPMS=$(R_RPM)
 
 %.rpm:
 	echo "PLR=$(PLR_DIR)"
@@ -42,6 +38,11 @@ ifdef DEPENDENT_RPMS
 	done
 endif
 	source $(GPHOME)/greenplum_path.sh && gppkg --build gppkg
+
+distro: $(TARGET_GPPKG)
+	$(MAKE) $(R_RPM) RPM_FLAGS=$(R_RPM_FLAGS)
+	PATH=$(INSTLOC)/bin:$(PATH) $(MAKE) $(PLR_RPM) RPM_FLAGS=$(PLR_RPM_FLAGS)
+	$(MAKE) $(PLR_GPPKG) MAIN_RPM=$(PLR_RPM) DEPENDENT_RPMS=$(R_RPM)
 
 clean:
 	rm -rf RPMS BUILD SPECS SOURCES SRPMS

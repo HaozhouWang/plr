@@ -16,7 +16,7 @@ centos*)
     ;;
 ubuntu*)
     apt update
-    apt install -y pkg-config
+    apt install -y r-base pkg-config
     ;;
 *)
     echo "unknown OSVER = $OSVER"
@@ -34,10 +34,7 @@ function pkg() {
 
     ## Install R
     tar zxf bin_r/bin_r_$OSVER.tar.gz -C /usr/lib64
-    if [ "$OSVER" == "ubuntu18" ]; then
-	export LD_LIBRARY_PATH=/usr/lib64/R/lib/R/lib:/usr/lib64/R/lib/R/extlib:$LD_LIBRARY_PATH
-        export R_HOME=/usr/lib64/R/lib/R
-    else
+    if [ "$OSVER" != "ubuntu18" ]; then
         export LD_LIBRARY_PATH=/usr/lib64/R/lib64/R/lib:/usr/lib64/R/lib64/R/extlib:$LD_LIBRARY_PATH
         export R_HOME=/usr/lib64/R/lib64/R
 	export PATH=/usr/lib64/R/bin/:$PATH

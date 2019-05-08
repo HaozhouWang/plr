@@ -77,7 +77,7 @@ centos*)
     ;;
 ubuntu*)
     apt update
-    apt install -y pkg-config
+    apt install -y r-base pkg-config
     ;;
 *)
     echo "unknown OSVER = $OSVER"
